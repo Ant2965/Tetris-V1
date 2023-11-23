@@ -28,13 +28,13 @@ data "aws_vpc" "default" {
 #get public subnets for cluster
 data "aws_subnets" "public" {
   filter {
-    name   = "vpc-id"
+    name   = "vpc-id1"
     values = [data.aws_vpc.default.id]
   }
 }
 #cluster provision
 resource "aws_eks_cluster" "example" {
-  name     = "EKS_CLOUD"
+  name     = "EKS_CLOUD1"
   role_arn = aws_iam_role.example.arn
 
   vpc_config {
@@ -49,7 +49,7 @@ resource "aws_eks_cluster" "example" {
 }
 
 resource "aws_iam_role" "example1" {
-  name = "eks-node-group-cloud"
+  name = "eks-node-group-cloud1"
 
   assume_role_policy = jsonencode({
     Statement = [{
